@@ -22,7 +22,7 @@ const Film = ({ data, errors, ...props }) => {
         <h1>Errors:</h1>
         <ul>
           {errors.map(({ message, path }) => (
-            <li key={message}>{message} (at {path.join('.')})</li>
+            <li key={message}>{message} (at {path?.join('.')})</li>
           ))}
         </ul>
       </div>
