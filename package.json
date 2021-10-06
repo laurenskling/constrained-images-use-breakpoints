@@ -15,8 +15,9 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "gatsby": "^3.11.1",
-    "gatsby-source-graphql": "^3.12.0",
+    "gatsby": "^4.0.0-zz-next.2",
+    "gatsby-plugin-sitemap": "^5.0.0-zz-next.2",
+    "gatsby-source-graphql": "4.0.0-zz-next.2",
     "lmdb-store": "^1.6.6",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"

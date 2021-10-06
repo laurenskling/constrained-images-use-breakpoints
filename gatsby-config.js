@@ -20,5 +20,6 @@ module.exports = {
         url: "https://swapi-graphql.netlify.app/.netlify/functions/index",
       },
     },
+    'gatsby-plugin-sitemap',
   ],
 };

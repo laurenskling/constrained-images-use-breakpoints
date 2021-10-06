@@ -23,7 +23,7 @@ const Films = ({ data }) => {
       <h1>Films</h1>
       <ul>
         {data.swapi.allFilms.edges.map(({ node }) => (
-          <Link key={node.id} to={node.id}>{node.title}</Link>
+          <Link key={node.id} to={`/${node.id}`}>{node.title}</Link>
         ))}
       </ul>
     </div>

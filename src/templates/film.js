@@ -13,10 +13,28 @@ export const pageQuery = graphql`
   }
 `;
 
-const Film = ({ data }) => (
-  <div>
-    <h1>{data.swapi.film.title}</h1>
-  </div>
-);
+const Film = ({ data, errors, ...props }) => {
+  console.log(data, errors, props);
+
+  if (errors) {
+    return (
+      <div>
+        <h1>Errors:</h1>
+        <ul>
+          {errors.map(({ message, path }) => (
+            <li key={message}>{message} (at {path.join('.')})</li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <h1>Film:</h1>
+      <h2>{data?.swapi?.film?.title}</h2>
+    </div>
+  );
+};
 
 export default Film;

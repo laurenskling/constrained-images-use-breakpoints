@@ -11,8 +11,12 @@ exports.createResolvers = ({ createResolvers }) => {
 };
 
 
-exports.createPages = async ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
+
+  const activity = reporter.activityTimer('creating film pages');
+  activity.start();
+
   const result = await graphql(`
     query MyQuery {
       swapi {
@@ -43,6 +47,10 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         id: node.id,
       }, // additional data can be passed via context
+      defer: false,
     });
   });
+
+  activity.setStatus(`Created ${allFilms.edges.length} film pages`);
+  activity.end();
 };
