@@ -47,7 +47,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       context: {
         id: node.id,
       }, // additional data can be passed via context
-      defer: false,
+      defer: true,
     });
   });
 
