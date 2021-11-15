@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 export const pageQuery = graphql`
   query MyQuery {
@@ -9,6 +10,17 @@ export const pageQuery = graphql`
           node {
             title
             id
+          }
+        }
+      }
+    }
+    allFile {
+      edges {
+        node {
+          id
+          name
+          childImageSharp {
+            gatsbyImageData(layout:CONSTRAINED, width: 300)
           }
         }
       }
@@ -23,7 +35,16 @@ const Films = ({ data }) => {
       <h1>Films</h1>
       <ul>
         {data.swapi.allFilms.edges.map(({ node }) => (
-          <Link key={node.id} to={`/${node.id}`}>{node.title}</Link>
+          <div key={node.id}>
+            <Link to={`/${node.id}`}>{node.title}</Link>
+          </div>
+        ))}
+      </ul>
+      <ul>
+        {data.allFile.edges.map(({ node }) => (
+          <div key={node.id}>
+          <GatsbyImage image={getImage(node)} alt={node.name} />
+          </div>
         ))}
       </ul>
     </div>
